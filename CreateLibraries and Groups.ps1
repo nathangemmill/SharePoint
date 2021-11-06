@@ -45,15 +45,15 @@ foreach ($Library in $LibraryNames)
 #----------------------------------------------------------------
 # Loop through spreadhseet and set Document Library permissions
 #----------------------------------------------------------------
-#foreach ($Library in $LibraryNames)
-#{
-#    $Title = $Library.LibraryName 
-#    [string]$GroupNameWrite = $GroupNamePrefix.replace('   ','') + ' - ' + $Title.replace(' ','') + ' - R&W'
-#    [string]$GroupNameRead = $GroupNamePrefix.replace('   ','') + ' - ' + $Title.replace(' ','') + ' - RO'
-#    Write-Host Breaking inheritance on the following document library: $Title
-#    Set-PnPList -Identity $Title -BreakRoleInheritance -CopyRoleAssignments
-#    Write-Host Setting edit permissions for the following group: $GroupNameWrite
-#    Set-PnPListPermission -Identity "$Title" -AddRole "Edit" -Group "$GroupNameWrite"
-#    Write-Host Setting read permissions for the following group: $GroupNameRead
-#    Set-PnPGroupPermissions -Identity $GroupNameRead -List $Title -AddRole "Read"
-#}
+foreach ($Library in $LibraryNames)
+{
+    $Title = $Library.LibraryName 
+    [string]$GroupNameWrite = $GroupNamePrefix.replace('   ','') + ' - ' + $Title.replace(' ','') + ' - R&W'
+    [string]$GroupNameRead = $GroupNamePrefix.replace('   ','') + ' - ' + $Title.replace(' ','') + ' - RO'
+    Write-Host Breaking inheritance on the following document library: $Title
+    Set-PnPList -Identity $Title -BreakRoleInheritance -CopyRoleAssignments
+    Write-Host Setting edit permissions for the following group: $GroupNameWrite
+    Set-PnPListPermission -Identity "$Title" -AddRole "Edit" -User "$GroupNameWrite"
+    Write-Host Setting read permissions for the following group: $GroupNameRead
+    Set-PnPListPermission -Identity "$Title" -AddRole "Read" -User "$GroupNameWrite"
+}
