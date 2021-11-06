@@ -15,8 +15,8 @@ $GroupNamePrefix = Import-Csv -Path ".\DocumentLibraries.csv" | Select-Object -E
 #----------------------------------------------------------------
 # Connect to Exchange Online & SharePoint Site
 #----------------------------------------------------------------
-#Connect-MsolService
-#Connect-PnPOnline -Url $SiteAddress -UseWebLogin
+Connect-MsolService
+Connect-PnPOnline -Url $SiteAddress -UseWebLogin
 
 #----------------------------------------------------------------
 # Loop through spreadhseet and create libraries
