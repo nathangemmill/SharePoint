@@ -55,5 +55,5 @@ foreach ($Library in $LibraryNames)
     Write-Host Setting edit permissions for the following group: $GroupNameWrite
     Set-PnPListPermission -Identity "$Title" -AddRole "Edit" -User "$GroupNameWrite"
     Write-Host Setting read permissions for the following group: $GroupNameRead
-    Set-PnPListPermission -Identity "$Title" -AddRole "Read" -User "$GroupNameWrite"
+    Set-PnPListPermission -Identity "$Title" -AddRole "Read" -User "$GroupNameRead"
 }
